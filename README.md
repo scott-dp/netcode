@@ -31,6 +31,7 @@
     <li>
       Visning av spill tilstand: Spilltilstanden tegnes bare opp med ASCII grafikk i konsollen som executable filen kjøres i.
     </li>
+    <li>CI og CD: En simpel CI ble implementert for å sjekke at koden bygges, og i tillegg kjøres clang-tidy for linting. CD ble også implementert, men kun for server. Ettersom at CD er mye lettere om jeg har en linux vennlig versjon av koden var det noe jeg måtte lage. Serveren kjører på en gratis server fra AWS. CD'en kjører kun på push til main branch på netcode unix repoet. CD'en kobler seg opp til AWS skymaskinen med ssh, henter den nyeste koden, bygger og kompilerer koden, og restarter en systemd service som kjører executable'en som lages under kompileringen.</li>
   </ul>
 
 ## Fremtidig arbeid
