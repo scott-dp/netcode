@@ -1,6 +1,14 @@
 # UDPRollbaCPP
 [Lenke til CI](https://github.com/scott-dp/netcode/actions)  
-[Lenke til CD](https://github.com/scott-dp/netcodeUnix/actions)  
+[Lenke til CD](https://github.com/scott-dp/netcodeUnix/actions) 
+
+## Innholdsfortegnelse
+1. [Hva er UDPRollbaCPP?](#Hva er UDPRollbaCPP?)
+2. [Funksjonalitet](#Funksjonalitet)
+3. [Fremtidig arbeid](#Fremtidig arbeid)
+4. [Eksterne avhengigheter](#Eksterne avhengigheter)
+5. [Installasjon](#Installasjon)
+6. [Trådmodell](#Trådmodell)
 
 ## Hva er UDPRollbaCPP?
 <p>
