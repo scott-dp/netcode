@@ -37,6 +37,12 @@
 <p>
   Jeg kunne også lagt til tester for å teste programmet.
 </p>
+<p>
+  Arv kunne også vært noe jeg kunne brukt mer i programmet. Server og klient klassene hadde ganske mye til felles (mer enn jeg trodde de kom til å ha da jeg startet å utvikle) og kunne implementert en klasse de kunne arvet fra for å hindre unødvendig repetering av kode.
+</p>
+<p>
+  Klient sender en avkoblingsmelding til server når den kobler av slik at server kan fjerne den klient fra sin tilstand og gi den oppdateringen til de andre tilkoblede klientene.
+</p>
 
 ## Eksterne avhengigheter
 <p>
@@ -69,3 +75,13 @@
   cmake --build .
   ```
   og du kan bruke eksamen.exe i "build" mappen på samme måte som beskrevet ovenfor
+
+
+## Trådmodell
+### Klient
+<p>
+  Det ble brukt 3 hovedtråder i klienten. En tråd som kjørte "spill event loopen", den lyttet til input fra tastaturet, oppdaterte den lokale tilstanden hvis W, A, S eller D ble trykket på, og sendte den oppdateringen til server. Den andre tråden kjørte en "motta loop" som lyttet til socketen sin og mottok oppdateringer fra server. Den tredje og siste tråden kjørte "tegne tråden" og tegnet spill tilstanden for hver frame. Det ble også brukt arbeidstråder som utførte arbeidsoppgaver som å sjekke oppdatering fra server og eventuelt oppdatere lokal tilstand. Det ble brukt en mutex i klienten som ble låst da man skulle gjøre ett eller annet med tilstanden "localState". En atomic boolean "runClient" ble også brukt i while løkkene til hver av hovedtrådene.
+</p>
+<p>
+  Det var også 3 hovedtråder brukt i serveren. Den første tegnet tilstanden for hver frame. Den andre lyttet til tastaturet for å sjekke om quit kommandoen "Q" ble trykket på. I den siste "hovedtråden" hos server kjørte en løkke som lyttet til trafikk på socketen sin. Det ble også brukt arbeidstråder i serveren. Her ble de brukt for å kringkaste oppdateringer til klientene. Det var tre mutexer brukt i serveren. En for å låse tilstanden "authoritativeState" hvis noe arbeid på den skulle gjøres. En annen for å låse settet som holdt på socket adressene til alle de tilkoblede klientene. Den siste for å låse spiller id variabelen, som server brukte for å generere spiller id til klienter som ville koble på. På samme måte som i klient ble en atomic boolean "runServer" brukt i alle while løkkene for å sjekke om server skulle fortsette å kjøre.
+</p>
