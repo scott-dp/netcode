@@ -27,3 +27,22 @@ g++ -std=c++17 -o eksamen  main.cpp src/Client.cpp src/Server.cpp src/Game/Playe
       Visning av spill tilstand: Spilltilstanden tegnes bare opp med ASCII grafikk i konsollen som executable filen kjøres i.
     </li>
   </ul>
+
+## Fremtidig arbeid
+<p>
+  En mangel som jeg kunne lagt til i fremtidig arbeid ville vært istedenfor å sette alle spillere tilbake til server tilstanden hvis deres posisjon er feil, kunne jeg kjørt tilbake til siste riktig tilstand, kjøre en resimulering av spillet med de gitte oppdateringene, da ville aldri den lokale spilleren trekkes tilbake til server tilstanden når en server oppdatering kommer. Dette ville da vært sann rollback netcode, i motsetning til det jeg har implementert.
+</p>
+<p>
+  En annen ting jeg kunne lagt til er visning av spillet med et ordentlig grafikk bibloitek istedenfor å bruke ASCII grafikk.
+</p>
+<p>
+  Jeg kunne også lagt til tester for å teste programmet.
+</p>
+
+## Eksterne avhengigheter
+<p>
+  mswsock og ws2_32: brukt for å sette opp UDP sockets på klient og server side.
+</p>
+<p>
+  pthread: brukt på unix versjon av programmet for tråder.
+</p>
