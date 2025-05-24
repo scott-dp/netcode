@@ -30,6 +30,8 @@
   En mangel som jeg kunne lagt til i fremtidig arbeid ville vært istedenfor å sette alle spillere tilbake til server tilstanden hvis deres posisjon er feil, kunne jeg kjørt tilbake til siste riktig tilstand, kjøre en resimulering av spillet med de gitte oppdateringene, da ville aldri den lokale spilleren trekkes tilbake til server tilstanden når en server oppdatering kommer. Dette ville da vært sann rollback netcode, i motsetning til det jeg har implementert.
 </p>
 <p>
+  En ting som kunne gjort programmet litt bedre hadde vært å introdusere en toleranse for rollbacken, slik at hvis en spiller var 1 posisjon feil så lot man det gå og ikke rullet tilbake.
+<p>
   En annen ting jeg kunne lagt til er visning av spillet med et ordentlig grafikk bibloitek istedenfor å bruke ASCII grafikk.
 </p>
 <p>
