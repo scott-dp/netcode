@@ -23,4 +23,7 @@ g++ -std=c++17 -o eksamen  main.cpp src/Client.cpp src/Server.cpp src/Game/Playe
     <li>
       <p>Rollback netcode: Måten netcode er implementert her er at hver spiller har en fart og denne farten brukes til å oppdatere hver spiller for hver ny frame som tegnes. Denne farten antas å være korrekt helt opptil en oppdatering fra server kommer som sier noe annet. På denne måten predikerer hver klient hva den neste bevegelsen til alle de andre klientene er ved å se på hva den lagrede farten deres er. Dette kan jo såklart være en feilpredikering og dette rettes opp i når oppdatering kommer til server, der hver lokal spiller sin tilstand sjekeks opp mot server, og eventuelt trekkes tilbake til den riktige tilstanden gitt av server om den lokale tilstanden ikke stemmer.</p>
     </li>
+    <li>
+      Visning av spill tilstand: Spilltilstanden tegnes bare opp med ASCII grafikk i konsollen som executable filen kjøres i.
+    </li>
   </ul>
