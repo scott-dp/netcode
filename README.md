@@ -79,9 +79,10 @@
 
 ## Trådmodell
 ### Klient
-<p>
+
   Det ble brukt 3 hovedtråder i klienten. En tråd som kjørte "spill event loopen", den lyttet til input fra tastaturet, oppdaterte den lokale tilstanden hvis W, A, S eller D ble trykket på, og sendte den oppdateringen til server. Den andre tråden kjørte en "motta loop" som lyttet til socketen sin og mottok oppdateringer fra server. Den tredje og siste tråden kjørte "tegne tråden" og tegnet spill tilstanden for hver frame. Det ble også brukt arbeidstråder som utførte arbeidsoppgaver som å sjekke oppdatering fra server og eventuelt oppdatere lokal tilstand. Det ble brukt en mutex i klienten som ble låst da man skulle gjøre ett eller annet med tilstanden "localState". En atomic boolean "runClient" ble også brukt i while løkkene til hver av hovedtrådene.
-</p>
-<p>
+
+### Server
+
   Det var også 3 hovedtråder brukt i serveren. Den første tegnet tilstanden for hver frame. Den andre lyttet til tastaturet for å sjekke om quit kommandoen "Q" ble trykket på. I den siste "hovedtråden" hos server kjørte en løkke som lyttet til trafikk på socketen sin. Det ble også brukt arbeidstråder i serveren. Her ble de brukt for å kringkaste oppdateringer til klientene. Det var tre mutexer brukt i serveren. En for å låse tilstanden "authoritativeState" hvis noe arbeid på den skulle gjøres. En annen for å låse settet som holdt på socket adressene til alle de tilkoblede klientene. Den siste for å låse spiller id variabelen, som server brukte for å generere spiller id til klienter som ville koble på. På samme måte som i klient ble en atomic boolean "runServer" brukt i alle while løkkene for å sjekke om server skulle fortsette å kjøre.
-</p>
+
