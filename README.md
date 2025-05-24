@@ -45,7 +45,6 @@
 </p>
 
 ## Installasjon
-<p>
   Hent fra main branch av dette git repoet. Du kan enten kjøre 
   ```
   ./eksamen.exe c
@@ -55,9 +54,7 @@
   ./eksamen.exe s
   ```
   for å kjøre server (ikke egentlig nødvendig siden server er hostet). Hvis du vil kjøre egen server instans må du endre på koden og legge inn riktig server port og server ip for din kjøring i main.cpp på linje 10 og 11, så kompilere på nytt og kjøre server og klient som du vil.
-</p>
 ### Kompilering
-<p>
   For å kompilere med g++ på windows kan du bruke kommandoen
   ```
   g++ -std=c++17 -o eksamen  main.cpp src/Client.cpp src/Server.cpp src/Game/Player.cpp src/Game/State.cpp src/Game/LocalState.cpp -lws2_32 -lmswsock
@@ -70,4 +67,3 @@
   cmake --build .
   ```
   og du kan bruke eksamen.exe i "build" mappen på samme måte som beskrevet ovenfor
-</p>
