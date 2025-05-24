@@ -7,7 +7,7 @@
 
 using namespace std;
 
-const string serverIp = "51.21.197.206";
+const string serverIp = "56.228.42.158";
 const int serverPort = 28080;
 const int bufferSize = 1024;
 
