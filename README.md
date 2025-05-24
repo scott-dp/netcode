@@ -41,7 +41,7 @@
   Arv kunne også vært noe jeg kunne brukt mer i programmet. Server og klient klassene hadde ganske mye til felles (mer enn jeg trodde de kom til å ha da jeg startet å utvikle) og kunne implementert en klasse de kunne arvet fra for å hindre unødvendig repetering av kode.
 </p>
 <p>
-  Klient sender en avkoblingsmelding til server når den kobler av slik at server kan fjerne den klient fra sin tilstand og gi den oppdateringen til de andre tilkoblede klientene.
+  En til ting som kunne vært fint å legge til hadde vært om klient sender en avkoblingsmelding til server når den kobler av slik at server kan fjerne den klienten fra sin tilstand og gi oppdatering til de andre tilkoblede klientene.
 </p>
 
 ## Eksterne avhengigheter
