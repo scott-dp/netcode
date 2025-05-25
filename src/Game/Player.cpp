@@ -66,11 +66,9 @@ void Player::updatePosition() {
 }
 
 Player Player::deserialize(const string& serializedPlayer) {
-    cout << "Deserializing player: " << serializedPlayer << "\n";
     Player p;
     std::istringstream iss(serializedPlayer);
     iss >> p.id >> p.xPos >> p.yPos >> p.xSpeed >> p.ySpeed;
-    cout << "Deserialize success\n";
     return p;
 }
 

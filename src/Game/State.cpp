@@ -24,14 +24,11 @@ void State::updatePlayer(Player playerUpdate) {
 }
 
 Player *State::getPlayerWithId(int id) {
-    cout << "GEttimg player with id "<<id << "\n";
     for (auto &player : players) {
         if (player.getId() == id) {
-            cout << "Found the player\n";
             return &player;
         }
     }
-    cout << "Didnt find the player\n";
     return nullptr;
 }
 

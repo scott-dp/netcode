@@ -15,18 +15,15 @@
 using namespace std;
 
 int Client::start() {
-    cout << "Starting client\n";
     WSADATA wsaData;
     WSAStartup(MAKEWORD(2, 2), &wsaData);
 
-    cout << "Creating socket\n";
     socketFileDescriptor = socket(AF_INET, SOCK_DGRAM, 0);
 
     if (socketFileDescriptor < 0) {
         cerr << "couldn't create client socket, try again" << endl;
         exit(EXIT_FAILURE);
     }
-    cout << "Client socket created\n";
 
     serverAddress.sin_family = AF_INET;
     serverAddress.sin_port = htons(serverPort); //SERvER port
@@ -72,7 +69,6 @@ int Client::parseIdGenerationMessage() {
         {
             lock_guard<mutex> lock(localStateMutex);
             localState.getState()->addPlayer(player);
-            cout << "Added player " << player.getId() << endl;
         }
     }
 
@@ -92,12 +88,10 @@ Client::Client(int bufferSize, int serverPort, string serverIp) : localState(0),
     this->serverIp = serverIp;
     this->buffer = new char[bufferSize];
     int gamerId = start();
-    cout << "Setting gamer id to " << gamerId << endl;
     {
         lock_guard<mutex> lock(localStateMutex);
         localState.setGamerId(gamerId);
     }
-    cout << "Set the id\n";
 }
 
 void Client::sendMessageToServer(string message) {
@@ -105,7 +99,6 @@ void Client::sendMessageToServer(string message) {
            message.length(), 0,
            (const struct sockaddr *) &serverAddress, sizeof(serverAddress));
 
-    cout << "Sent: " << message << " to server\n";
 }
 
 void Client::receiveFromServer() {
@@ -131,7 +124,6 @@ void Client::receiveFromServer() {
 
     buffer[receivedBytes] = '\0';
 
-    cout << "Received: " << buffer << endl;
     if (buffer[0] == 'i' && buffer[1] == 'd' && buffer[2] == ':') {
         //This is just the generated id and not actually a position update from the server
         return;
@@ -194,11 +186,9 @@ void Client::runGameEventLoop() {
             }
             case 'q':
             case 'Q':
-                cout << "Quit\n";
                 runClient = false;
                 return;
             default:
-                cout << "nothing\n";
                 continue;
         }
     }
